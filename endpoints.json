@@ -1,0 +1,102 @@
+{
+  "events": {
+    "list": {
+      "method": "GET",
+      "path": "/api/events",
+      "description": "Get a list of all public events (browsable by users)"
+    },
+    "get": {
+      "method": "GET",
+      "path": "/api/events/:eventId",
+      "description": "Get detailed information for a single event"
+    },
+    "create": {
+      "method": "POST",
+      "path": "/api/events",
+      "description": "Create a new event (staff/admin only)"
+    },
+    "update": {
+      "method": "PUT",
+      "path": "/api/events/:eventId",
+      "description": "Update an existing event (staff/admin only)"
+    },
+    "delete": {
+      "method": "DELETE",
+      "path": "/api/events/:eventId",
+      "description": "Delete an event (staff/admin only)"
+    }
+  },
+  "users": {
+    "register": {
+      "method": "POST",
+      "path": "/api/users/register",
+      "description": "Register a new user"
+    },
+    "login": {
+      "method": "POST",
+      "path": "/api/users/login",
+      "description": "User login"
+    },
+    "profile": {
+      "method": "GET",
+      "path": "/api/users/me",
+      "description": "Get the current logged-in user's profile"
+    },
+    "updateProfile": {
+      "method": "PUT",
+      "path": "/api/users/me",
+      "description": "Update the current user's profile"
+    }
+  },
+  "signups": {
+    "listUserSignups": {
+      "method": "GET",
+      "path": "/api/signups",
+      "description": "Get list of events the user has signed up for (requires authentication)"
+    },
+    "signupForEvent": {
+      "method": "POST",
+      "path": "/api/signups",
+      "description": "Sign up the logged-in user for an event"
+    },
+    "cancelSignup": {
+      "method": "DELETE",
+      "path": "/api/signups/:signupId",
+      "description": "Cancel a signup (user or admin only)"
+    },
+    "listEventSignups": {
+      "method": "GET",
+      "path": "/api/events/:eventId/signups",
+      "description": "List all signups for an event (staff/admin only)"
+    }
+  },
+  "staff": {
+    "listStaff": {
+      "method": "GET",
+      "path": "/api/staff",
+      "description": "List all staff members (admin only)"
+    },
+    "assignStaffToEvent": {
+      "method": "POST",
+      "path": "/api/events/:eventId/staff",
+      "description": "Assign a staff member to an event (admin only)"
+    },
+    "removeStaffFromEvent": {
+      "method": "DELETE",
+      "path": "/api/events/:eventId/staff/:staffId",
+      "description": "Remove a staff member from an event (admin only)"
+    }
+  },
+  "calendar": {
+    "getGoogleCalendarEvents": {
+      "method": "GET",
+      "path": "/api/calendar/google",
+      "description": "Get events from Google Calendar (user authorized)"
+    },
+    "syncEventToGoogleCalendar": {
+      "method": "POST",
+      "path": "/api/events/:eventId/google-sync",
+      "description": "Sync an event to the user's Google Calendar"
+    }
+  }
+}

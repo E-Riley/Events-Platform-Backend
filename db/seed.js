@@ -1,6 +1,6 @@
 const db = require("./connection");
 const format = require("pg-format");
-const formatData = require("../utils/utils");
+const { formatData } = require("../utils/utils");
 
 const seed = ({ eventData, signupData, userData }) => {
   return db
