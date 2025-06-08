@@ -3,6 +3,7 @@ const {
   fetchEventById,
   createEvent,
   removeEvent,
+  getEventsCreatedByAdmin,
 } = require("../models/events.models");
 
 exports.getEvents = (req, res, next) => {
@@ -32,5 +33,12 @@ exports.postEvent = (req, res, next) => {
 exports.deleteEvent = (req, res, next) => {
   removeEvent(req.params.event_id)
     .then(() => res.status(204).send())
+    .catch(next);
+};
+
+exports.getAdminCreatedEvents = (req, res, next) => {
+  const user_id = req.params.user_id;
+  getEventsCreatedByAdmin(user_id)
+    .then((events) => res.status(200).send({ events }))
     .catch(next);
 };

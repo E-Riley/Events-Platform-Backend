@@ -40,3 +40,11 @@ exports.removeEvent = (event_id) => {
       }
     });
 };
+
+exports.getEventsCreatedByAdmin = (user_id) => {
+  const query = `
+    SELECT * FROM events
+    WHERE creator_id = $1;
+  `;
+  return db.query(query, [user_id]).then((result) => result.rows);
+};

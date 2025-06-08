@@ -26,3 +26,13 @@ exports.removeSignup = (signup_id) => {
       }
     });
 };
+
+exports.getEventsSignedUpByUser = (user_id) => {
+  const query = `
+    SELECT events.*
+    FROM events
+    JOIN signups ON events.event_id = signups.event_id
+    WHERE signups.user_id = $1;
+  `;
+  return db.query(query, [user_id]).then((result) => result.rows);
+};

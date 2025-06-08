@@ -2,6 +2,7 @@ const {
   fetchSignups,
   createSignup,
   removeSignup,
+  getEventsSignedUpByUser,
 } = require("../models/signups.models");
 
 exports.getSignups = (req, res, next) => {
@@ -25,5 +26,12 @@ exports.deleteSignup = (req, res, next) => {
     .then(() => {
       res.status(204).send();
     })
+    .catch(next);
+};
+
+exports.getUserSignedUpEvents = (req, res, next) => {
+  const user_id = req.params.user_id;
+  getEventsSignedUpByUser(user_id)
+    .then((events) => res.status(200).send({ events }))
     .catch(next);
 };
