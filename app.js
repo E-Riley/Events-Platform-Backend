@@ -1,9 +1,6 @@
 const express = require("express");
 const apiRouter = require("./routes/api.router");
 const cors = require("cors");
-require("dotenv").config({
-  path: process.env.NODE_ENV === "production" ? ".env.production" : ".env",
-});
 
 const app = express();
 app.use(cors());
